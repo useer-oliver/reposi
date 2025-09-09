@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           leading: const Icon(Icons.menu), // Ícono de menú
-          title: const Text('Datos Personales'), // Título de la AppBar
+          title: const Text('Datos Personales', style: TextStyle(color: Colors.white)), // Título de la AppBar
           backgroundColor: Colors.purple,
           actions: const [
             Icon(Icons.more_vert), // Ícono de more_vert
