@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_application_1/screens/chats.dart';
-import 'package:flutter_application_1/screens/detail_product.dart';
+import 'package:app_lareina/screens/chats.dart';
+import 'package:app_lareina/screens/detail_product.dart';
 
 
 class ProductsScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   String _searchText = '';
   int _currentIndex = 2;
 
-  final List<String> categories = ['Electrónica', 'Línea Blanca', 'Jardín', 'Otros'];
+  final List<String> categories = ['Música', 'Deporte', 'Arte', 'Cultuta', 'Tecnología', 'Social'];
 
   void _onTabTapped(int index) { //indice
     if (index == 0) {
@@ -52,7 +52,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const SizedBox(height: 16),
-                const Text('Agregar producto', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                const Text('Agregar actividad', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 24),
                 TextField(
                   controller: titleController,
@@ -62,7 +62,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 TextField(
                   controller: descriptionController,
                   maxLines: 4,
-                  decoration: const InputDecoration(labelText: 'Descripción', border: OutlineInputBorder(), contentPadding: EdgeInsets.all(16), alignLabelWithHint: true),
+                  decoration: const InputDecoration(labelText: 'Lugar', border: OutlineInputBorder(), contentPadding: EdgeInsets.all(16), alignLabelWithHint: true),
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField<String>(
@@ -77,7 +77,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 TextField(
                   controller: priceController,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(labelText: 'Precio', border: OutlineInputBorder(), contentPadding: EdgeInsets.all(16)),
+                  decoration: const InputDecoration(labelText: 'Precio reserva', border: OutlineInputBorder(), contentPadding: EdgeInsets.all(16)),
                 ),
                 const SizedBox(height: 24),
                 Row(
@@ -102,7 +102,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
                           Navigator.pop(context);
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Producto agregado correctamente')),
+                            const SnackBar(content: Text('Actividad agregada correctamente')),
                           );
                         }
                       },
@@ -136,7 +136,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const SizedBox(height: 16),
-                const Text('Editar producto', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                const Text('Editar actividad', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 24),
                 TextField(
                   controller: titleController,
@@ -145,7 +145,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 const SizedBox(height: 16),
                 TextField(
                   controller: descriptionController,
-                  decoration: const InputDecoration(labelText: 'Descripción', border: OutlineInputBorder(), contentPadding: EdgeInsets.all(16)),
+                  decoration: const InputDecoration(labelText: 'Lugar', border: OutlineInputBorder(), contentPadding: EdgeInsets.all(16)),
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField<String>(
@@ -160,7 +160,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 TextField(
                   controller: priceController,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(labelText: 'Precio', border: OutlineInputBorder(), contentPadding: EdgeInsets.all(16)),
+                  decoration: const InputDecoration(labelText: 'Precio reserva', border: OutlineInputBorder(), contentPadding: EdgeInsets.all(16)),
                 ),
                 const SizedBox(height: 24),
                 Row(
@@ -184,7 +184,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
                           Navigator.pop(context);
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Producto actualizado correctamente')),
+                            const SnackBar(content: Text('Actividad actualizada correctamente')),
                           );
                         }
                       },
@@ -204,8 +204,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Eliminar producto'),
-        content: const Text('¿Estás seguro de que quieres eliminar este producto?'),
+        title: const Text('Eliminar actividad'),
+        content: const Text('¿Estás seguro de que quieres eliminar esta actividad?'),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancelar')),
           ElevatedButton(onPressed: () => Navigator.pop(context, true), child: const Text('Eliminar')),
@@ -216,7 +216,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     if (confirm == true) {
       await FirebaseFirestore.instance.collection('products').doc(docId).delete();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Producto eliminado correctamente')),
+        const SnackBar(content: Text('Actividad eliminada correctamente')),
       );
     }
   }
@@ -233,7 +233,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
-        title: const Text('Productos'),
+        title: const Text('Actividades'),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(56),
           child: Padding(
@@ -242,7 +242,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
               controller: _searchController,
               onChanged: (value) => setState(() => _searchText = value.toLowerCase()),
               decoration: InputDecoration(
-                hintText: 'Buscar producto...',
+                hintText: 'Búsqueda...',
                 fillColor: Colors.white,
                 filled: true,
                 prefixIcon: const Icon(Icons.search),
@@ -259,7 +259,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('products').orderBy('timestamp', descending: true).snapshots(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) return const Center(child: Text('Error al cargar productos'));
+          if (snapshot.hasError) return const Center(child: Text('Error al cargar actividades'));
           if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
 
           final docs = snapshot.data!.docs;
@@ -269,7 +269,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
             return title.contains(_searchText);
           }).toList();
 
-          if (filteredDocs.isEmpty) return const Center(child: Text('No hay productos que coincidan'));
+          if (filteredDocs.isEmpty) return const Center(child: Text('No hay actividades que coincidan'));
 
           return ListView.builder(
             padding: const EdgeInsets.all(12),
@@ -342,8 +342,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.category), label: 'Otros'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chats'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Buscar'),
+          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Fechas'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Actividades'),
         ],
       ),
     );

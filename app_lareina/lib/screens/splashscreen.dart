@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart'; // Importa MainApp
+import 'package:app_lareina/main.dart'; // Importa MainApp
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -38,10 +38,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
       body: Center(
         child: AnimatedOpacity(
-          duration: const Duration(milliseconds: 500), // Duración de la animación
+          duration: const Duration(milliseconds: 300), // Duración de la animación
           opacity: opacity,
           child: const Text(
-                'Soy el Splashscreen',
+                'Bienvenid@',
                 style: TextStyle(fontSize: 24),
               ),
           ),

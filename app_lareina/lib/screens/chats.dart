@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_application_1/screens/login.dart';
+import 'package:app_lareina/screens/login.dart';
 import 'products.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -59,7 +59,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
               children: [
                 const SizedBox(height: 16),
                 const Text(
-                  'Agregar contacto',
+                  'Agregar fecha',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 24),
@@ -95,7 +95,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                           final messenger = ScaffoldMessenger.of(context);
                           Navigator.pop(context);
                           messenger.showSnackBar(
-                            const SnackBar(content: Text('Contacto agregado correctamente')),
+                            const SnackBar(content: Text('Fecha agregada correctamente')),
                           );
                         }
                       },
@@ -127,14 +127,14 @@ class _ChatsScreenState extends State<ChatsScreen> {
               children: [
                 const SizedBox(height: 16),
                 const Text(
-                  'Editar contacto',
+                  'Editar fecha',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 24),
                 TextField(
                   controller: nameController,
                   decoration: const InputDecoration(
-                    labelText: 'Nombre',
+                    labelText: 'Nombre de Fecha',
                     border: OutlineInputBorder(),
                     contentPadding: EdgeInsets.all(16),
                   ),
@@ -163,7 +163,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                           final messenger = ScaffoldMessenger.of(context);
                           Navigator.pop(context);
                           messenger.showSnackBar(
-                            const SnackBar(content: Text('Contacto actualizado correctamente')),
+                            const SnackBar(content: Text('Fecha actualizada correctamente')),
                           );
                         }
                       },
@@ -183,8 +183,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Eliminar contacto'),
-        content: const Text('¿Estás seguro de que quieres eliminar este contacto?'),
+        title: const Text('Eliminar fecha'),
+        content: const Text('¿Estás seguro de que quieres eliminar esta fecha?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -201,7 +201,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
     if (confirm == true) {
       await FirebaseFirestore.instance.collection('contacts').doc(docId).delete();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Contacto eliminado correctamente')),
+        const SnackBar(content: Text('Fecha eliminada correctamente')),
       );
     }
   }
@@ -211,7 +211,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
-        title: const Text('Whatsapp', style: TextStyle(color: Colors.white)),
+        title: const Text('Fechas agregadas', style: TextStyle(color: Colors.white)),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout, color: Colors.white),
@@ -233,7 +233,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                 child: TextField(
                   controller: _searchController,
                   decoration: InputDecoration(
-                    hintText: 'Buscar productos...',
+                    hintText: 'Buscar fechas...',
                     fillColor: Colors.white,
                     filled: true,
                     prefixIcon: const Icon(Icons.search),
@@ -263,7 +263,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
-            label: 'Chats',
+            label: 'Calendario',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
@@ -283,7 +283,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return const Center(child: Text('Error al cargar contactos'));
+          return const Center(child: Text('Error al cargar fechas'));
         }
         if (!snapshot.hasData) {
           return const Center(child: CircularProgressIndicator());
@@ -292,7 +292,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
         final docs = snapshot.data!.docs;
 
         if (docs.isEmpty) {
-          return const Center(child: Text('No hay contactos registrados'));
+          return const Center(child: Text('No hay fechas agregadas'));
         }
 
         return ListView.builder(

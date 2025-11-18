@@ -17,7 +17,7 @@ class DetailProductScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Detalle del producto',
+          'Detalle reserva',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,

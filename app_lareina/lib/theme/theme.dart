@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'package:flutter_application_1/screens/splashscreen.dart';
-import 'package:flutter_application_1/screens/chats.dart';
-import 'package:flutter_application_1/theme/theme.dart';
+import 'package:app_lareina/screens/splashscreen.dart';
+import 'package:app_lareina/screens/chats.dart';
+import 'package:app_lareina/theme/theme.dart';
 
 class AppTheme {
   // Tema claro
   static ThemeData lightTheme = FlexThemeData.light(
-    scheme: FlexScheme.dellGenoa,
+   scheme: FlexScheme.bahamaBlue,
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     blendLevel: 7,
     lightIsWhite: true,
@@ -29,7 +29,7 @@ class AppTheme {
 
   // Tema oscuro
   static ThemeData darkTheme = FlexThemeData.dark(
-    scheme: FlexScheme.dellGenoa,
+    scheme: FlexScheme.bahamaBlue,
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     blendLevel: 13,
     subThemesData: const FlexSubThemesData(

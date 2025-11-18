@@ -3,10 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:flutter_application_1/screens/splashscreen.dart';
-import 'package:flutter_application_1/screens/products.dart';
-import 'package:flutter_application_1/screens/login.dart';
-import 'package:flutter_application_1/theme/theme.dart';
+import 'package:app_lareina/screens/splashscreen.dart';
+import 'package:app_lareina/screens/products.dart';
+import 'package:app_lareina/screens/login.dart';
+import 'package:app_lareina/theme/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
