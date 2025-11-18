@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:app_lareina/screens/chats.dart';
-import 'package:app_lareina/screens/detail_product.dart';
+import 'package:app_lareina/screens/fechas.dart';
+import 'package:app_lareina/screens/detail_activiti.dart';
 
 
 class ProductsScreen extends StatefulWidget {

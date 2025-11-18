@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:app_lareina/screens/splashscreen.dart';
-import 'package:app_lareina/screens/chats.dart';
+import 'package:app_lareina/screens/fechas.dart';
 import 'package:app_lareina/theme/theme.dart';
 
 class AppTheme {

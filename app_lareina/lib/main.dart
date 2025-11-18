@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:app_lareina/screens/splashscreen.dart';
-import 'package:app_lareina/screens/products.dart';
+import 'package:app_lareina/screens/activities.dart';
 import 'package:app_lareina/screens/login.dart';
 import 'package:app_lareina/theme/theme.dart';
 

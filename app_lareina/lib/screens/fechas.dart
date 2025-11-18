@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:app_lareina/screens/login.dart';
-import 'products.dart';
+import 'activities.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ChatsScreen extends StatefulWidget {

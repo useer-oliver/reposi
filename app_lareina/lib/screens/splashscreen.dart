@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_lareina/main.dart'; // Importa MainApp
 
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -40,12 +41,18 @@ class _SplashScreenState extends State<SplashScreen> {
         child: AnimatedOpacity(
           duration: const Duration(milliseconds: 300), // Duración de la animación
           opacity: opacity,
-          child: const Text(
-                'Bienvenid@',
-                style: TextStyle(fontSize: 24),
+          child: Image.asset(
+                'assets/logo-apps2.png',
+                
+
+                
               ),
+                    
+              
           ),
         ),
+
+        
       );
   }
 }
