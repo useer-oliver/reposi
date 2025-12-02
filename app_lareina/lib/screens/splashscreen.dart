@@ -1,3 +1,4 @@
+import 'package:app_lareina/pagehome.dart';
 import 'package:flutter/material.dart';
 import 'package:app_lareina/main.dart'; // Importa MainApp
 
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.pushReplacement(
           // ignore: use_build_context_synchronously
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) =>  LoginPage()),
         );
       });
     });

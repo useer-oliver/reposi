@@ -1,3 +1,9 @@
+import 'package:app_lareina/calendar.dart';
+import 'package:app_lareina/inicio.dart';
+import 'package:app_lareina/newprofile.dart';
+import 'package:app_lareina/pagehome.dart';
+import 'package:app_lareina/profile.dart';
+import 'package:app_lareina/search.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,6 +13,7 @@ import 'package:app_lareina/screens/splashscreen.dart';
 import 'package:app_lareina/screens/activities.dart';
 import 'package:app_lareina/screens/login.dart';
 import 'package:app_lareina/theme/theme.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,53 +35,67 @@ Future<void> main() async {
     if (e.code != 'duplicate-app') rethrow;
   }
 
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  
+  
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
-      home: const SplashScreen(),
+      
+      theme:ThemeData(
+        appBarTheme: AppBarTheme(
+     color: const Color(0xFF2782C3),
+     
+        )
+        ),
+      
+      home: SplashScreen(),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class RootPage extends StatefulWidget {
+  const RootPage({super.key});
 
-  void _signOut(BuildContext context) async {
-    await GoogleSignIn.instance.signOut();
-    await FirebaseAuth.instance.signOut();
+  @override
+  State<RootPage> createState() => _RootPageState();
+}
 
-    Navigator.pushReplacement(
-      // ignore: use_build_context_synchronously
-      context,
-      MaterialPageRoute(builder: (_) => const LoginScreen()),
-    );
-  }
+class _RootPageState extends State<RootPage> {
+  int currentPage =0;
+  List<Widget> pages = [InicioPage(), SearchPage(), DaysPage() ,Newprofile()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Inicio'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout, color: Colors.white),
 
-            onPressed: () => _signOut(context),
-          ),
-        ],
+      body: pages[currentPage],
+
+    
+      bottomNavigationBar: NavigationBar ( 
+        
+  backgroundColor: Color(0xFF2782C3), destinations: const [
+        NavigationDestination(icon: Icon(Icons.home), label: 'Inicio'),
+        NavigationDestination(icon: Icon(Icons.search), label: 'Buscar'),
+        NavigationDestination(icon: Icon(Icons.calendar_month), label: 'Calendario'),
+        NavigationDestination(icon: Icon(Icons.person), label: 'Perfil'), 
+      ],
+      onDestinationSelected: (int index){
+        setState((){
+          currentPage = index; 
+        });
+      },
+      selectedIndex: currentPage,
       ),
-      body: const ProductsScreen(),
-    );
+
+    );  
+
   }
 }
